@@ -1,0 +1,25 @@
+# Chombo Make.defs.local for Lawrencium (gcc/11.4.0 + openmpi/4.1.6)
+# Load environment first: source env/lawrencium.sh
+# Then symlink or copy this file to Chombo/lib/mk/Make.defs.local
+
+DIM        = 3
+DEBUG      = FALSE
+OPT        = HIGH
+PRECISION  = DOUBLE
+CXX        = g++
+FC         = gfortran
+MPI        = TRUE
+MPICXX     = mpicxx
+OPENMPCC   = FALSE
+
+cxxoptflags = -march=native -O3
+
+# HDF5 (parallel build — same library serves both serial and MPI paths)
+USE_HDF         = TRUE
+HDFINCFLAGS     = -I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-srbevcutioii7lti5mmu2kwy3ve324mg/include
+HDFLIBFLAGS     = -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-srbevcutioii7lti5mmu2kwy3ve324mg/lib -lhdf5 -lz
+HDFMPIINCFLAGS  = -I/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-srbevcutioii7lti5mmu2kwy3ve324mg/include
+HDFMPILIBFLAGS  = -L/global/software/rocky-8.x86_64/gcc/linux-rocky8-x86_64/gcc-11.4.0/hdf5-1.14.3-srbevcutioii7lti5mmu2kwy3ve324mg/lib -lhdf5 -lz
+
+# Intel MKL (serial — required by GRChombo)
+syslibflags = -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl

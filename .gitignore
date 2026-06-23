@@ -11,6 +11,7 @@ ipo_out.optrpt
 jobscript*
 *.pbs
 *.sh
+!env/*.sh
 
 # Example output
 Weyl_integral*
