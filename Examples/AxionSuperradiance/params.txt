@@ -19,7 +19,7 @@ plot_prefix = Axionp_
 checkpoint_interval = 500
 # set to 0 to turn off plot files (except at t=0 and t=stop_time)
 # set to -1 to never ever print plotfiles
-plot_interval = 1
+plot_interval = 10   # every 10 coarse steps = every 5 M (~20 files over 100 M)
 num_plot_vars = 4
 plot_vars = chi phi Ham Mom
 
